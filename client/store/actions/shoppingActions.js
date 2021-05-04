@@ -4,7 +4,6 @@ const uri = 'http://10.0.2.2:3000';
 
 // Get Shopping Items
 export const getShoppingItems = () => dispatch => {
-  console.log(`${uri}/api/shopping`);
   axios
     .get(`${uri}/api/shopping`)
     .then(({data}) => {
