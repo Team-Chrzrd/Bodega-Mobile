@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const uri = 'http://192.168.43.49:3000';
+const uri = 'http://10.0.2.2:3000';
 
 // Load Pantry Item
 export const LOAD_PANTRY_ITEM = 'LOAD_PANTRY_ITEM';

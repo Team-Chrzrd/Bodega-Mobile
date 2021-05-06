@@ -5,13 +5,13 @@ import ShoppingListContainer from './Shopping/ShoppingList';
 import PantryListContainer from './Pantry/PantryList';
 
 const ShoppingList = () => (
-  <View style={[styles.scene, {backgroundColor: '#ff4081'}]}>
+  <View style={[styles.scene, {backgroundColor: 'white'}]}>
     <ShoppingListContainer />
   </View>
 );
 
 const PantryList = () => (
-  <View style={[styles.scene, {backgroundColor: '#673ab7'}]}>
+  <View style={[styles.scene, {backgroundColor: 'white'}]}>
     <PantryListContainer />
   </View>
 );
@@ -38,6 +38,7 @@ export default function TabsView() {
       onIndexChange={setIndex}
       initialLayout={initialLayout}
       style={styles.container}
+      swipeEnabled={false}
     />
   );
 }
