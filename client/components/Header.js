@@ -19,11 +19,6 @@ export default function Header() {
         />
         <Text style={tailwind('text-4xl text-yellow-500')}>Bodega</Text>
       </View>
-
-      <View style={{flex: 1, flexDirection: 'row'}}>
-        <AddItem />
-        <Checkout />
-      </View>
     </View>
   );
 }

@@ -6,8 +6,9 @@ import MinusBuyButton from './MinusBuyButton';
 import AddBuyButton from './AddBuyButton';
 import MinusListButton from './MinusListButton';
 import AddListButton from './AddListButton';
+import AddItem from '../../AddItem';
 
-export default function SItem({itemDetails}) {
+export default function ShoppingItem({itemDetails}) {
   const {
     category,
     item_name,
@@ -22,13 +23,14 @@ export default function SItem({itemDetails}) {
   const swipeOutButtons = [
       {
           text: "Update",
-        //   OnPress:(itemDetails) => ();
+          onPress:() => (<AddItem form="edit" type="shopping" item={itemDetails} openModal={true}/>),
+          // onPress:(itemDetails) => (console.log('item', itemDetails)),
         backgroundColor: "#1dd1d1",
         color: "#fff"
       },
       {
         text: "Delete",
-      //   OnPress:(_id) => ();
+        // onPress:(_id) => (),
       backgroundColor: "#DC2727",
       color: "white"
     }
