@@ -5,15 +5,15 @@ import tailwind from 'tailwind-rn';
 // import {minusBy} from '../../../store/actions/shoppingActions';
 
 //Decrements required stock QTY
-export default function MinusBuyButton({id}){
+export default function AddParPantry({id}){
    //   const dispatch = useDispatch();
   return (<View>
     <Pressable
-          id="minus-btn"
+          id="addPar-btn"
           style={tailwind(
             'relative items-center px-2 py-2 rounded-md border border-gray-300 bg-white text-sm text-gray-500',
           )}>
-           <Text style={tailwind('font-bold')}>-</Text>
+           <Text>+</Text>
           </Pressable>
   </View>);
 };
