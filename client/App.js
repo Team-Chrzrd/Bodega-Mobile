@@ -6,15 +6,31 @@ import {Provider} from 'react-redux';
 import store from './store/store.js';
 import Header from './components/Header';
 import TabsView from './components/Tabs/Tabs';
+import {ApolloClient} from 'apollo-client';
+import {InMemoryCache} from 'apollo-cache-inmemory';
+import {HttpLink} from 'apollo-link-http';
+import {ApolloProvider} from '@apollo/react-hooks';
+
+const cache = new InMemoryCache();
+const link = new HttpLink({
+  uri: 'http://10.0.2.2:3000/api/graphql/',
+});
+
+const client = new ApolloClient({
+  cache,
+  link,
+});
 
 export default function App() {
   return (
-    <Provider store={store}>
-      <View style={styles.container}>
-        <Header />
-      </View>
-      <TabsView />
-    </Provider>
+    <ApolloProvider client={client}>
+      <Provider store={store}>
+        <View style={styles.container}>
+          <Header />
+        </View>
+        <TabsView />
+      </Provider>
+    </ApolloProvider>
   );
 }
 

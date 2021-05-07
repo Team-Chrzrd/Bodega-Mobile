@@ -1,19 +1,15 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, View, FlatList, Text} from 'react-native';
 import tailwind from 'tailwind-rn';
-import {useSelector, useDispatch} from 'react-redux';
-import {getPantryItems} from '../../../store/actions/pantryActions';
+// import {useSelector, useDispatch} from 'react-redux';
+// import {getPantryItems} from '../../../store/actions/pantryActions';
 import PantryItem from './PantryItem';
 import AddItem from '../../AddItem';
+import usePantryActions from '../../../hooks/usePantryActions';
 
 export default function PantryListContainer() {
-  const pantryItems = useSelector((state) => state.pantry.pantryList);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getPantryItems());
-  }, []);
-
+  const { pantryItems, data, error } = usePantryActions();
+  console.log('pantryitems',pantryItems)
   const sortItem = (a, b) => {
     if (a.item_name < b.item_name) {
       return -1;
