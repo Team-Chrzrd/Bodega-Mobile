@@ -6,8 +6,12 @@ import MinusBuyButton from './MinusBuyButton';
 import AddBuyButton from './AddBuyButton';
 import MinusListButton from './MinusListButton';
 import AddListButton from './AddListButton';
+import AddItem from '../../AddItem';
+import { useDispatch } from 'react-redux';
+import { deleteShoppingItem } from "../../../store/actions/shoppingActions";
 
-export default function SItem({itemDetails}) {
+export default function ShoppingItem({itemDetails}) {
+  const dispatch = useDispatch();
   const {
     category,
     item_name,
@@ -21,17 +25,11 @@ export default function SItem({itemDetails}) {
 
   const swipeOutButtons = [
       {
-          text: "Update",
-        //   OnPress:(itemDetails) => ();
-        backgroundColor: "#1dd1d1",
-        color: "#fff"
-      },
-      {
         text: "Delete",
-      //   OnPress:(_id) => ();
-      backgroundColor: "#DC2727",
-      color: "white"
-    }
+        onPress:() => dispatch(deleteShoppingItem(itemDetails._id)),
+        backgroundColor: "#DC2727",
+        color: "white"
+      }
   ]
   return (
     <Swipeout

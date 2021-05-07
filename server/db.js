@@ -14,7 +14,7 @@ const db = new pg.Pool(dbconfig);
 
 module.exports = {
   query: (text, params, callback) => {
-    console.log('executed query', text);
+    // console.log('executed query', text);
     return db.query(text, params, callback);
   },
 };

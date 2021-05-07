@@ -6,8 +6,13 @@ import AddButtonPantry from './AddButtonPantry';
 import MinusButtonPantry from './MinusButtonPantry';
 import MinusParPantry from './MinusParPantry';
 import AddParPantry from './AddParPantry';
+import { useDispatch } from 'react-redux';
+import { deletePantryItem } from "../../../store/actions/pantryActions";
+import { addFromPantry } from "../../../store/actions/shoppingActions";
+
 
 export default function PantryItem({itemDetails}) {
+  const dispatch = useDispatch();
   const {
     category,
     item_name,
@@ -18,15 +23,15 @@ export default function PantryItem({itemDetails}) {
   } = itemDetails;
 
   const swipeOutButtons = [
-      {
-          text: "Update",
-        //   OnPress:(itemDetails) => ();
-        backgroundColor: "#1dd1d1",
-        color: "#fff"
-      },
-      {
-        text: "Delete",
-      //   OnPress:(_id) => ();
+    {
+      text: "To Cart",
+      onPress:() => dispatch(addFromPantry(itemDetails._id)),
+      backgroundColor: "#1dd1d1",
+      color: "#fff"
+    },
+    {
+      text: "Delete",
+      onPress:() => dispatch(deletePantryItem(itemDetails._id)),
       backgroundColor: "#DC2727",
       color: "white"
     }
@@ -51,7 +56,7 @@ export default function PantryItem({itemDetails}) {
             <View style={tailwind('flex flex-row justify-around w-2/5')}>
                 <View
                 style={tailwind('flex flex-col justify-center items-center mt-2')}>
-                <Text style={tailwind('mt-2')}>Cart Qty</Text>
+                <Text style={tailwind('mt-2')}>Pantry Qty</Text>
                 <View style={tailwind('flex justify-center items-center')}>
                     <Text style={tailwind('text-3xl font-semibold text-blue-700')}>
                     {qty}
