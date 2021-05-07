@@ -11,53 +11,73 @@ import {
   } from '../../client/store/actions/pantryActions';
 import tailwind from 'tailwind-rn';
   
-export default function AddUpdateForm({form}) {
+export default function AddUpdateForm({type, hideModal}) {
     //setting component state
   const [item_name, setItemName] = useState('');
     const [list_qty, setQuantity] = useState(0);
     const [category, setCategory] = useState('Dairy');
     const [unit, setUnit] = useState('--');
     const [note, setNote] = useState('');
-    const [par, setPar] = useState('');
+    const [buy_qty, setCart] = useState('');
     const [pantryQty, setPantryQty] = useState('');
-    // const [selectedCategory, setCategory] = useState('');
-    // const [selectedUnit, setUnit] = useState('');
 
-  //onClick Function (Save Changes) to sent user data
   const dispatch = useDispatch();
 
-  //gets the item that is to be updated by id from either pantry or shopping list
-  const updatedItem = useSelector(state => state.shopping.updatedItem);
+  const sendNewItem = () => {
+    const dataSet = {
+      item_name,
+      unit,
+      buy_qty,
+      list_qty,
+      category,
+      note,
+    };
 
+    console.log('new item', dataSet);
+
+    console.log('form type', type);
+    //if the user is clicked on the shopping list tab, send to shopping list DB
+    if(type === "shopping") {
+        dispatch(addShoppingItem(dataSet));
+      }
+    //if the user is clicked on the pantry list tab, send to shopping list DB
+      else if(type=== "pantry") {
+        dispatch(addPantryItem(dataSet));
+      }
+
+      hideModal(false);
+  };
+
+  
     return (
     <View>
         <SafeAreaView>
-            <Text style={tailwind('mt-2 mb-2 text-base font-medium')}>{(form === 'add' ? 'Add' : 'Edit')} Item</Text> 
+            <Text style={tailwind('mt-2 mb-2 text-base font-medium')}>Add New Item</Text> 
             <TextInput
                placeholder="Item Name" 
-                value={item_name}
+                defaultValue={item_name}
                 style={tailwind(
                     'mt-2 px-2 py-2 border-2 border-gray-300 h-12 w-full',
                   )}
-                onChange={e=> setItemName(e.target.value)}
+                onChangeText={item_name => setItemName(item_name)}
             >
             </TextInput>
             <TextInput
-                placeholder="Quantity"
-                value={list_qty}
+                placeholder="Required Quantity"
+                defaultValue={list_qty}
                 style={tailwind(
                     'mt-2 px-2 py-2 border-2 border-gray-300 h-12 w-full'
                 )}
-                onChange={(e) => setQuantity(e.target.value)}
+                onChangeText={list_qty => setQuantity(list_qty)}
             >
             </TextInput>
             <TextInput
-                placeholder="Stock Amount"
-                value={par}
+                placeholder="Cart Quantity"
+                defaultValue={buy_qty}
                 style={tailwind(
                     'mt-2 px-2 py-2 border-2 border-gray-300 h-12 w-full'
                 )}
-                onChange={(e) => setPar(e.target.value)}
+                onChangeText={buy_qty => setCart(buy_qty)}
             >
             </TextInput>
             <View style={tailwind(
@@ -103,19 +123,23 @@ export default function AddUpdateForm({form}) {
             </View>
             <TextInput
                 placeholder="Notes"
-                value={note}
+                defaultValue={note}
                 style={tailwind(
                     'mt-2 px-2 py-2 border-2 border-gray-300 h-12 w-full'
                 )}
-                onChange={(e) => setNote(e.target.value)}
+                onChangeText={note => setNote(note)}
             >
             </TextInput>
             <View style={tailwind('flex flex-row justify-center mt-5')}>
-            <Pressable style={tailwind('bg-green-500 px-6 py-3 rounded shadow mr-1 mb-1')}>
+            <Pressable 
+                style={tailwind('bg-green-500 px-6 py-3 rounded shadow mr-1 mb-1')}
+                onPress={sendNewItem}
+            >
                 <Text style={tailwind(' text-white font-bold uppercase text-sm ')}>Save</Text>
             </Pressable>
             <Pressable style={tailwind('bg-red-700 px-6 py-3 rounded shadow mr-1 mb-1')}>
-                <Text style={tailwind(' text-white font-bold uppercase text-sm')}>Close</Text>
+                <Text style={tailwind(' text-white font-bold uppercase text-sm')}
+                onPress = {() => hideModal(false)}>Close</Text>
             </Pressable>
             </View>
         </SafeAreaView>

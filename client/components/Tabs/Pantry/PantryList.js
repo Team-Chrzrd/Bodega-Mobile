@@ -5,7 +5,6 @@ import {useSelector, useDispatch} from 'react-redux';
 import {getPantryItems} from '../../../store/actions/pantryActions';
 import PantryItem from './PantryItem';
 import AddItem from '../../AddItem';
-import Checkout from '../../Checkout';
 
 export default function PantryListContainer() {
   const pantryItems = useSelector((state) => state.pantry.pantryList);
@@ -33,7 +32,6 @@ export default function PantryListContainer() {
     <View>
        <View style={tailwind('flex flex-row justify-end  py-3 px-3')}>
       <AddItem type="pantry" form="add"/>
-      <Checkout />
       </View>
       <FlatList
         data={pantryItems.sort((a, b) => sortItem(a, b))}

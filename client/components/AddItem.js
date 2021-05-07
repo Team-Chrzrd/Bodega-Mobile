@@ -3,10 +3,8 @@ import {StyleSheet, Text, View, Pressable, Modal} from 'react-native';
 import tailwind from 'tailwind-rn';
 import AddUpdateForm from './AddUpdateForm';
 
-export default function AddItem({form, type, item, openModal}) {
-  console.log('open Modal', openModal);
-
-  const [modalVisible, setModalVisible] = useState(openModal? openModal: false);
+export default function AddItem({type}) {
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <View>
@@ -23,19 +21,7 @@ export default function AddItem({form, type, item, openModal}) {
       >
         <View  style={tailwind('flex mt-2')}>
           <View style={tailwind('mt-2 px-4 py-4')}>
-            <View style={tailwind('items-end')}>
-              <Pressable
-                style={tailwind(
-                  'items-center px-5 py-2 border border-transparent rounded-md bg-red-700 w-1/4',
-                )}
-                onPress={() => setModalVisible(!modalVisible)}
-              >
-                <Text style={tailwind(
-                    'px-2 py-2 text-white text-base font-semibold',
-                  )}>X</Text>
-              </Pressable>
-            </View>
-            <AddUpdateForm form={form}/>
+            <AddUpdateForm type={type} hideModal={setModalVisible}/>
           </View>
         </View>
       </Modal>

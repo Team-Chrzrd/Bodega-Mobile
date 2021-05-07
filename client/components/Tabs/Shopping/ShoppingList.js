@@ -32,7 +32,7 @@ export default function ShoppingListContainer() {
   return (
     <View>
       <View style={tailwind('flex flex-row justify-end py-3 px-3')}>
-      <AddItem type="shopping" form="add" />
+      <AddItem type="shopping"/>
       <Checkout />
       </View>
       <FlatList
