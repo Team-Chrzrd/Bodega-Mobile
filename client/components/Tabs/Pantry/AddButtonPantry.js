@@ -6,7 +6,7 @@ import {PANTRY_QTY_UP} from '../../../Queries/Queries';
 import usePantryActions from '../../../hooks/usePantryActions';
 
 // Increments Required stock QTY
-const AddButtonPantry = ({_id, item_name}) => {
+const AddButtonPantry = ({_id}) => {
   const {refreshPantryItems} = usePantryActions();
 
   const [pantryQtyUp] = useMutation(PANTRY_QTY_UP, {

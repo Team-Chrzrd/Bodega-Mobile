@@ -1,17 +1,16 @@
 import React from 'react';
-import {StyleSheet, Text, View, Button, Pressable} from 'react-native';
+import {Text, View} from 'react-native';
 import tailwind from 'tailwind-rn';
 import Swipeout from 'react-native-swipeout';
 import MinusBuyButton from './MinusBuyButton';
 import AddBuyButton from './AddBuyButton';
 import MinusListButton from './MinusListButton';
 import AddListButton from './AddListButton';
-import AddItem from '../../AddItem';
 import {useMutation} from '@apollo/react-hooks';
 import {SHOPPING_REMOVE} from '../../../Queries/Queries';
 import useShoppingActions from '../../../hooks/useShoppingActions';
 
-export default function ShoppingItem({itemDetails}) {
+const ShoppingItem = ({itemDetails}) => {
   const {refreshShoppingItems} = useShoppingActions();
 
   const {
@@ -92,4 +91,6 @@ export default function ShoppingItem({itemDetails}) {
       </View>
     </Swipeout>
   );
-}
+};
+
+export default ShoppingItem;

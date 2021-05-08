@@ -4,7 +4,6 @@ import tailwind from 'tailwind-rn';
 import {useMutation} from '@apollo/react-hooks';
 import {PANTRY_QTY_DOWN} from '../../../Queries/Queries';
 import usePantryActions from '../../../hooks/usePantryActions';
-import MinusParPantry from './MinusParPantry';
 
 // Increments Required stock QTY
 const MinusButtonPantry = ({_id, item_name}) => {

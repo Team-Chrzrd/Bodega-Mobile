@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {View, FlatList} from 'react-native';
 import tailwind from 'tailwind-rn';
 import ShoppingItem from '../../Tabs/Shopping/ShoppingItem';
@@ -6,9 +6,7 @@ import AddItem from '../../AddItem';
 import Checkout from '../../Checkout';
 import useShoppingActions from '../../../hooks/useShoppingActions';
 
-export default function ShoppingListContainer() {
-
-
+const ShoppingListContainer = () => {
   // Setup gql query
   const {shoppingItems} = useShoppingActions();
 
@@ -37,4 +35,6 @@ export default function ShoppingListContainer() {
       />
     </View>
   );
-}
+};
+
+export default ShoppingListContainer;

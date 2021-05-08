@@ -4,7 +4,6 @@ import tailwind from 'tailwind-rn';
 import {useMutation} from '@apollo/react-hooks';
 import {SHOPPING_BUY_DOWN} from '../../../Queries/Queries';
 import useShoppingActions from '../../../hooks/useShoppingActions';
-import MinusButtonPantry from '../Pantry/MinusButtonPantry';
 
 //Decrements required stock QTY
 const MinusBuyButton = ({_id}) => {

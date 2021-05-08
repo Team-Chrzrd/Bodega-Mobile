@@ -1,28 +1,18 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  Pressable,
-  SafeAreaView,
-} from 'react-native';
+import {Text, View, SafeAreaView} from 'react-native';
 import tailwind from 'tailwind-rn';
 import Swipeout from 'react-native-swipeout';
 import AddButtonPantry from './AddButtonPantry';
 import MinusButtonPantry from './MinusButtonPantry';
 import MinusParPantry from './MinusParPantry';
 import AddParPantry from './AddParPantry';
-// import { useDispatch } from 'react-redux';
-// import { deletePantryItem } from "../../../store/actions/pantryActions";
-// import { addFromPantry } from "../../../store/actions/shoppingActions";
 import {useMutation} from '@apollo/react-hooks';
 import {PANTRY_REMOVE} from '../../../Queries/Queries';
 import {ADD_FROM_PANTRY} from '../../../Queries/Queries';
 import useShoppingActions from '../../../hooks/useShoppingActions';
 import usePantryActions from '../../../hooks/usePantryActions';
 
-export default function PantryItem({itemDetails}) {
+const PantryItem = ({itemDetails}) => {
   const {category, item_name, qty, unit, _id, par} = itemDetails;
 
   const {refreshShoppingItems} = useShoppingActions();
@@ -115,4 +105,6 @@ export default function PantryItem({itemDetails}) {
       </SafeAreaView>
     </Swipeout>
   );
-}
+};
+
+export default PantryItem;

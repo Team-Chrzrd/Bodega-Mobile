@@ -11,12 +11,9 @@ import tailwind from 'tailwind-rn';
 import {useMutation} from '@apollo/react-hooks';
 import useShoppingActions from '../hooks/useShoppingActions';
 import usePantryActions from '../hooks/usePantryActions.js';
-import {
-  SHOPPING_SUBMIT,
-  PANTRY_SUBMIT,
-} from '../Queries/Queries';
+import {SHOPPING_SUBMIT, PANTRY_SUBMIT} from '../Queries/Queries';
 
-export default function AddUpdateForm({type, hideModal}) {
+const AddUpdateForm = ({type, hideModal}) => {
   const {refreshShoppingItems} = useShoppingActions();
   const {refreshPantryItems} = usePantryActions();
 
@@ -42,8 +39,6 @@ export default function AddUpdateForm({type, hideModal}) {
   const [note, setNote] = useState('');
   const [min_qty, setCart] = useState('');
   const [pantryQty, setPantryQty] = useState('');
-
-  //   const dispatch = useDispatch();
 
   const sendNewItem = () => {
     //if the user is clicked on the shopping list tab, send to shopping list DB
@@ -76,14 +71,14 @@ export default function AddUpdateForm({type, hideModal}) {
   return (
     <View>
       <SafeAreaView>
-        <Text style={tailwind('mt-2 mb-2 text-base font-medium')}>
+        <Text style={tailwind('mt-3 mb-3 text-3xl font-bold text-gray-700')}>
           Add New Item
         </Text>
         <TextInput
           placeholder="Item Name"
           defaultValue={item_name}
           style={tailwind(
-            'mt-2 px-2 py-2 border-2 border-gray-300 h-12 w-full',
+            'mt-2 px-2 py-2 border-2 border-gray-300 h-12 w-full text-base',
           )}
           onChangeText={item_name => setItemName(item_name)}></TextInput>
 
@@ -92,7 +87,7 @@ export default function AddUpdateForm({type, hideModal}) {
             placeholder="Required Quantity"
             defaultValue={list_qty}
             style={tailwind(
-              'mt-2 px-2 py-2 border-2 border-gray-300 h-12 w-full',
+              'mt-2 px-2 py-2 border-2 border-gray-300 h-12 w-full text-base',
             )}
             onChangeText={list_qty => setQuantity(list_qty)}></TextInput>
         )}
@@ -101,7 +96,7 @@ export default function AddUpdateForm({type, hideModal}) {
             placeholder="Required Stock Quantity"
             defaultValue={min_qty}
             style={tailwind(
-              'mt-2 px-2 py-2 border-2 border-gray-300 h-12 w-full',
+              'mt-2 px-2 py-2 border-2 border-gray-300 h-12 w-full text-base',
             )}
             onChangeText={min_qty => setCart(min_qty)}></TextInput>
         )}
@@ -110,7 +105,7 @@ export default function AddUpdateForm({type, hideModal}) {
             placeholder="Pantry Quantity"
             defaultValue={pantryQty}
             style={tailwind(
-              'mt-2 px-2 py-2 border-2 border-gray-300 h-12 w-full',
+              'mt-2 px-2 py-2 border-2 border-gray-300 h-12 w-full text-base',
             )}
             onChangeText={pantryQty => setPantryQty(pantryQty)}></TextInput>
         )}
@@ -160,19 +155,18 @@ export default function AddUpdateForm({type, hideModal}) {
           placeholder="Notes"
           defaultValue={note}
           style={tailwind(
-            'mt-2 px-2 py-2 border-2 border-gray-300 h-12 w-full',
+            'mt-2 px-2 py-2 border-2 border-gray-300 h-12 w-full text-base',
           )}
           onChangeText={note => setNote(note)}></TextInput>
         <View style={tailwind('flex flex-row justify-center mt-5')}>
           <Pressable
-            style={tailwind('bg-green-500 px-6 py-3 rounded shadow mr-1 mb-1')}
+            style={tailwind('bg-green-500 px-6 py-3 rounded mr-1 mb-1')}
             onPress={sendNewItem}>
             <Text style={tailwind(' text-white font-bold uppercase text-sm ')}>
               Save
             </Text>
           </Pressable>
-          <Pressable
-            style={tailwind('bg-red-700 px-6 py-3 rounded shadow mr-1 mb-1')}>
+          <Pressable style={tailwind('bg-red-700 px-6 py-3 rounded mr-1 mb-1')}>
             <Text
               style={tailwind(' text-white font-bold uppercase text-sm')}
               onPress={() => hideModal(false)}>
@@ -183,4 +177,6 @@ export default function AddUpdateForm({type, hideModal}) {
       </SafeAreaView>
     </View>
   );
-}
+};
+
+export default AddUpdateForm;
