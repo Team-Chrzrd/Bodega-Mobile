@@ -132,12 +132,12 @@ export default function AddUpdateForm({type, hideModal}) {
             </TextInput>
             <View style={tailwind('flex flex-row justify-center mt-5')}>
             <Pressable 
-                style={tailwind('bg-green-500 px-6 py-3 rounded shadow mr-1 mb-1')}
+                style={tailwind('bg-green-500 px-6 py-3 rounded mr-1 mb-1')}
                 onPress={sendNewItem}
             >
                 <Text style={tailwind(' text-white font-bold uppercase text-sm ')}>Save</Text>
             </Pressable>
-            <Pressable style={tailwind('bg-red-700 px-6 py-3 rounded shadow mr-1 mb-1')}>
+            <Pressable style={tailwind('bg-red-700 px-6 py-3 rounded mr-1 mb-1')}>
                 <Text style={tailwind(' text-white font-bold uppercase text-sm')}
                 onPress = {() => hideModal(false)}>Close</Text>
             </Pressable>

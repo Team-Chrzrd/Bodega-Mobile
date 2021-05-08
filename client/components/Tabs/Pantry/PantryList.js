@@ -31,7 +31,7 @@ export default function PantryListContainer() {
   return (
     <View>
        <View style={tailwind('flex flex-row justify-end  py-3 px-3')}>
-      <AddItem type="pantry" form="add"/>
+      <AddItem type="pantry"/>
       </View>
       <FlatList
         data={pantryItems.sort((a, b) => sortItem(a, b))}
