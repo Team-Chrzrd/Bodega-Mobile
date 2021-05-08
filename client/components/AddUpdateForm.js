@@ -19,7 +19,8 @@ const AddUpdateForm = ({type, hideModal}) => {
 
   const [shoppingSubmit] = useMutation(SHOPPING_SUBMIT, {
     onCompleted: () => {
-      refreshShoppingItems();
+        // console.log('completed shoppingSubmit');
+    //   refreshShoppingItems();
       hideModal(false);
     },
   });
@@ -33,7 +34,7 @@ const AddUpdateForm = ({type, hideModal}) => {
 
   //setting component state
   const [item_name, setItemName] = useState('');
-  const [list_qty, setQuantity] = useState(0);
+  const [list_qty, setQuantity] = useState('');
   const [category, setCategory] = useState('Dairy');
   const [unit, setUnit] = useState('--');
   const [note, setNote] = useState('');
@@ -76,7 +77,7 @@ const AddUpdateForm = ({type, hideModal}) => {
         </Text>
         <TextInput
           placeholder="Item Name"
-          defaultValue={item_name}
+          value={item_name}
           style={tailwind(
             'mt-2 px-2 py-2 border-2 border-gray-300 h-12 w-full text-base',
           )}

@@ -21,8 +21,8 @@ const PantryListContainer = () => {
   const renderItem = ({item}) => <PantryItem itemDetails={item} />;
 
   return (
-    <View>
-      <View style={tailwind('flex flex-row justify-end  py-3 px-3')}>
+    <View style={tailwind('overflow-scroll')}>
+      <View style={tailwind('flex flex-row justify-end py-3 px-3')}>
         <AddItem type="pantry" />
       </View>
       <FlatList

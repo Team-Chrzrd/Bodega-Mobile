@@ -4,14 +4,17 @@ import tailwind from 'tailwind-rn';
 import {useMutation} from '@apollo/react-hooks';
 import {SHOPPING_CHECKOUT} from '../Queries/Queries';
 import useShoppingActions from '../hooks/useShoppingActions';
+import usePantryActions from '../hooks/usePantryActions';
 
 //Checkout button for shopping list
 const Checkout = () => {
   const {refreshShoppingItems} = useShoppingActions();
+  const {refreshPantryItems} = usePantryActions();
 
   const [shoppingCheckout] = useMutation(SHOPPING_CHECKOUT, {
     onCompleted: () => {
       refreshShoppingItems();
+      refreshPantryItems();
     },
   });
 

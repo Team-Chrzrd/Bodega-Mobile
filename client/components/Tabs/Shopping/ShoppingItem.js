@@ -46,7 +46,7 @@ const ShoppingItem = ({itemDetails}) => {
   ];
   return (
     <Swipeout right={swipeOutButtons} backgroundColor={'transparent'} close>
-      <View style={tailwind('flex flex-row justify-between px-4 py-4')}>
+      <View style={tailwind('flex flex-row justify-between border-b px-4 py-4')}>
         <View style={tailwind('flex flex-col items-center justify-center')}>
           <Text style={tailwind('flex items-center text-sm text-gray-500')}>
             {category}
@@ -56,25 +56,25 @@ const ShoppingItem = ({itemDetails}) => {
           </Text>
         </View>
 
-        <View style={tailwind('flex flex-row justify-around w-2/5')}>
+        <View style={tailwind('flex flex-row justify-around w-2/4')}>
           <View
-            style={tailwind('flex flex-col justify-center items-center mt-2')}>
-            <Text style={tailwind('mt-2')}>Cart Qty</Text>
+            style={tailwind('flex flex-col justify-center items-center mt-2 mb-2')}>
+            <Text>Cart Qty</Text>
             <View style={tailwind('flex justify-center items-center')}>
               <Text style={tailwind('text-3xl font-semibold text-blue-700')}>
                 {buy_qty}
               </Text>
               <Text>{unit}</Text>
             </View>
-            <View style={tailwind('flex flex-row')}>
+            <View style={tailwind('flex flex-row mt-2')}>
               <MinusBuyButton _id={_id} />
               <AddBuyButton _id={_id} />
             </View>
           </View>
 
           <View
-            style={tailwind('flex flex-col justify-center items-center mt-2')}>
-            <Text style={tailwind('mt-2')}>Required Qty</Text>
+            style={tailwind('flex flex-col justify-center items-center mt-2 mb-2')}>
+            <Text>Required Qty</Text>
             <View style={tailwind('flex justify-center items-center')}>
               <Text style={tailwind('text-3xl font-semibold text-blue-700')}>
                 {list_qty}
@@ -82,7 +82,7 @@ const ShoppingItem = ({itemDetails}) => {
               <Text>{unit}</Text>
             </View>
 
-            <View style={tailwind('flex flex-row')}>
+            <View style={tailwind('flex flex-row mt-2')}>
               <MinusListButton _id={_id} />
               <AddListButton _id={_id} />
             </View>

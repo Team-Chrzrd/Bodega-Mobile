@@ -169,7 +169,8 @@ module.exports = {
           "SELECT * FROM shopping WHERE user_id = '1' AND buy_qty > 0;";
         const qres = await db.query(qStr);
         const basket = qres.rows;
-        basket.forEach(async (item) => {
+        await Promise.all(
+          basket.map(async (item) => {
           if (item.pantry_id) {
             qStr = `SELECT * FROM pantry WHERE _id = ${item.pantry_id};`;
             const qres1 = await db.query(qStr);
@@ -198,7 +199,7 @@ module.exports = {
             await db.query(qStr);
           }
           return { success: true };
-        });
+        }));
       } catch (error) {
         console.log('error in shopping.js/shoppingCheckout', error);
         return { success: false };
@@ -218,7 +219,7 @@ module.exports = {
 
         if (!pantryItem) {
           const qStr = `INSERT INTO shopping (user_id, pantry_id, item_name, note, unit, list_qty, buy_qty, category)
-            SELECT user_id, _id, item_name, note, unit, '${par}', '0', category
+            SELECT user_id, _id, item_name, note, unit, '${par - qty}', '0', category
             FROM pantry
             WHERE _id = ${itemId} RETURNING *;`;
           await db.query(qStr);

@@ -2,9 +2,11 @@ import React, {useState} from 'react';
 import {Text, View, Pressable, Modal} from 'react-native';
 import tailwind from 'tailwind-rn';
 import AddUpdateForm from './AddUpdateForm';
+import useShoppingActions from '../hooks/useShoppingActions';
 
 export default function AddItem({type}) {
   const [modalVisible, setModalVisible] = useState(false);
+  const {refreshShoppingItems} = useShoppingActions();
 
   return (
     <View>
@@ -16,6 +18,7 @@ export default function AddItem({type}) {
         transparent={false}
         visible={modalVisible}
         onRequestClose={() => {
+          refreshShoppingItems();
           setModalVisible(!modalVisible);
         }}>
         <View style={tailwind('flex mt-2')}>
