@@ -1,18 +1,12 @@
-import React, {useEffect} from 'react';
-import {StyleSheet, View, FlatList, Text} from 'react-native';
+import React from 'react';
+import {View, FlatList} from 'react-native';
 import tailwind from 'tailwind-rn';
-import {useSelector, useDispatch} from 'react-redux';
-import {getPantryItems} from '../../../store/actions/pantryActions';
 import PantryItem from './PantryItem';
 import AddItem from '../../AddItem';
+import usePantryActions from '../../../hooks/usePantryActions';
 
-export default function PantryListContainer() {
-  const pantryItems = useSelector((state) => state.pantry.pantryList);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getPantryItems());
-  }, []);
+const PantryListContainer = () => {
+  const {pantryItems, data, error} = usePantryActions();
 
   const sortItem = (a, b) => {
     if (a.item_name < b.item_name) {
@@ -24,14 +18,12 @@ export default function PantryListContainer() {
     return 0;
   };
 
-  const renderItem = ({ item }) => (   
-    <PantryItem itemDetails={item} />
-  );
+  const renderItem = ({item}) => <PantryItem itemDetails={item} />;
 
   return (
     <View>
-       <View style={tailwind('flex flex-row justify-end  py-3 px-3')}>
-      <AddItem type="pantry" form="add"/>
+      <View style={tailwind('flex flex-row justify-end  py-3 px-3')}>
+        <AddItem type="pantry" />
       </View>
       <FlatList
         data={pantryItems.sort((a, b) => sortItem(a, b))}
@@ -40,4 +32,6 @@ export default function PantryListContainer() {
       />
     </View>
   );
-}
+};
+
+export default PantryListContainer;
