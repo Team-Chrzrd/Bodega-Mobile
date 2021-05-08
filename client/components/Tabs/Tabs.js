@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {View, StyleSheet, Dimensions, StatusBar} from 'react-native';
 import {TabView, SceneMap} from 'react-native-tab-view';
 import ShoppingListContainer from './Shopping/ShoppingList';
