@@ -1,17 +1,17 @@
-import * as React from 'react';
+import React from 'react';
 import {View, StyleSheet, Dimensions, StatusBar} from 'react-native';
 import {TabView, SceneMap} from 'react-native-tab-view';
 import ShoppingListContainer from './Shopping/ShoppingList';
 import PantryListContainer from './Pantry/PantryList';
 
 const ShoppingList = () => (
-  <View style={[styles.scene, {backgroundColor: 'white'}]}>
+  <View style={[styles.scene, {backgroundColor: 'white'}]} nativeID = 'ShoppingListTab'>
     <ShoppingListContainer />
   </View>
 );
 
 const PantryList = () => (
-  <View style={[styles.scene, {backgroundColor: 'white'}]}>
+  <View style={[styles.scene, {backgroundColor: 'white'}]} nativeID = 'PantryListTab'>
     <PantryListContainer />
   </View>
 );
